@@ -1,0 +1,15 @@
+# MATLAB local files
+*.asv
+*.m~
+
+# Generated figures and temporary outputs
+outputs/
+
+# Manuscript drafts and submission material are kept local in this workspace.
+Manuscript/
+
+# OS/editor metadata
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
