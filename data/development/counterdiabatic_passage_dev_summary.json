@@ -1,0 +1,56 @@
+{
+  "runMode": "dev",
+  "model": "central-sideband effective finite-mode dynamics",
+  "counterdiabaticHamiltonian": "H_CD = thetaDot(t) sigma_y in the atomic subspace",
+  "Nc": 204,
+  "dimension": 206,
+  "T": 20,
+  "nu": 8,
+  "u0": 0.9,
+  "rtol": 1E-9,
+  "atol": 1E-11,
+  "maxStep": 0.02,
+  "maxOmegaCDOverXi": 0.073631077818510776,
+  "sideband": {
+    "deltaF": 6,
+    "maxBareCoupling": 0.014002800840280098,
+    "maxSidebandCoupling": 0.0081476217159852423,
+    "maxBetaDot": 0.10627649674682375,
+    "deltaFOverSidebandCoupling": 736.41121411273775,
+    "deltaFOverBetaDot": 56.456509046336436,
+    "mMax": 6,
+    "numTimeSamples": 101
+  },
+  "cases": [
+    {
+      "name": "adiabatic",
+      "counterdiabaticScale": 0,
+      "runtimeSeconds": 0.2935289,
+      "maxNormError": 1.9984014443252818E-15,
+      "finalAtomicPopulation": 0.98572929120434061,
+      "finalPhotonicPopulation": 0.014270708795658412,
+      "finalConcurrence": 0.018965907833296113,
+      "finalConditionalConcurrence": 0.019240483165640761,
+      "finalBellPlusConditionalFidelity": 0.50962024158282038,
+      "finalTargetConditionalFidelity": 0.50962024158282038,
+      "minimumTargetConditionalFidelity": 0.50960703004419861
+    },
+    {
+      "name": "counterdiabatic",
+      "counterdiabaticScale": 1,
+      "runtimeSeconds": 0.1698173,
+      "maxNormError": 5.6621374255882984E-15,
+      "finalAtomicPopulation": 0.99589068503954514,
+      "finalPhotonicPopulation": 0.0041093149604502577,
+      "finalConcurrence": 0.99587079906142562,
+      "finalConditionalConcurrence": 0.99998003196694352,
+      "finalBellPlusConditionalFidelity": 0.9999900159834717,
+      "finalTargetConditionalFidelity": 0.99999001598347181,
+      "minimumTargetConditionalFidelity": 0.9999900026650046
+    }
+  ],
+  "outputs": {
+    "png": "C:\\Users\\admin\\Dropbox (Personal)\\Geometric control of maximal entangled states via bound states in the continuum\\outputs\\floquet\\counterdiabatic_passage_dev.png",
+    "pdf": "C:\\Users\\admin\\Dropbox (Personal)\\Geometric control of maximal entangled states via bound states in the continuum\\outputs\\floquet\\counterdiabatic_passage_dev.pdf"
+  }
+}

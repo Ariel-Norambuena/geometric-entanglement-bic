@@ -59,6 +59,17 @@ Current implementation:
 src/matlab/floquet_effective_rhs.m
 ```
 
+The same RHS accepts an optional atomic counterdiabatic correction,
+
+```text
+H_CD(t) = alpha thetaDot(t) sigma_y,
+```
+
+where `alpha = options.counterdiabaticScale`. The default `alpha=0` is the
+unassisted passage; `alpha=1` implements the minimal closed-atomic correction
+for the target path
+`|D_a(t)> = cos(theta)|eg> + sin(theta)|ge>`.
+
 ## Laboratory-Frame Driven Dynamics
 
 The laboratory model keeps the bare couplings and time-dependent atomic
@@ -103,6 +114,7 @@ Current implementation:
 ```text
 src/matlab/floquet_controls.m
 src/matlab/besselj0_inverse_first_branch.m
+scripts/run_counterdiabatic_passage.m
 ```
 
 ## Observables

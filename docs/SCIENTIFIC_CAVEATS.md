@@ -44,3 +44,8 @@ scientifically meaningful outcomes, not failures to hide.
 The minimal atomic counterdiabatic term can be used as a benchmark only. It
 should not be described as the exact counterdiabatic gauge potential of the
 full BIC unless the photonic component is included.
+
+The first reduced-grid result shows that this atomic CD term almost perfectly
+tracks the intended atomic path in the effective model. In manuscript language,
+this should be framed as evidence for the control principle and as a benchmark
+for nonadiabatic error, not yet as a complete microscopic protocol.

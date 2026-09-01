@@ -83,15 +83,21 @@ Useful development checks:
 ```matlab
 run('tests/test_floquet_controls.m')
 run('tests/test_effective_rhs_static_limit.m')
+run('tests/test_counterdiabatic_atomic_limit.m')
 addpath('scripts')
 run_dark_state_passage
 scan_passage_duration
+run_counterdiabatic_passage
 ```
 
 The reduced-grid development scan in `data/development/` is not a manuscript
 claim. It currently shows that the simple unassisted `u1/u2` passage does not
 yet prepare a high-fidelity Bell-BIC; the next scientific step is validating
 the full instantaneous BIC branch, including photonic dressing.
+
+The counterdiabatic development script adds the minimal atomic correction
+`H_CD = thetaDot(t) sigma_y` and exports concurrence, protocol fidelity, and
+control plots to `outputs/floquet/`.
 
 ## Numerical method
 

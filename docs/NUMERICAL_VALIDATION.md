@@ -18,6 +18,9 @@
 - The two-quadrature control identity is verified by numerical integration.
 - The effective-model RHS preserves norm instantaneously for a random state.
 - The sideband diagnostic reports dimensionless separation ratios.
+- The counterdiabatic atomic-limit test verifies that `H_CD =
+  thetaDot(t) sigma_y` drives the closed atomic state exactly along the target
+  path.
 
 ## Development Effective-Passage Scan
 
@@ -53,3 +56,24 @@ physical interpretation to the poor transfer.
 
 No manuscript-level claim about successful Bell-BIC preparation should be made
 until the pending items above are completed.
+
+## Development Counterdiabatic Result
+
+The reduced-grid CD comparison used the same parameters as the first
+effective-passage scan, with `xi*T = 20`. The unassisted run ends at
+`C = 0.018966` and `F_D^(a) = 0.509620`, while the CD-assisted run reaches
+`C = 0.995871` and `F_D^(a) = 0.999990`. Norm conservation remains below
+`6e-15`, and the peak CD amplitude is
+`max[Omega_CD(t)]/xi = 0.073631`.
+
+The corresponding plot is written to:
+
+```text
+outputs/floquet/counterdiabatic_passage_dev.png
+outputs/floquet/counterdiabatic_passage_dev.pdf
+```
+
+This is strong evidence that the failure of the unassisted reduced-grid
+passage is a nonadiabatic-following problem in the atomic direction. It is not
+yet proof of a laboratory-frame Bell-BIC protocol; the lab-frame comparison
+and instantaneous dressed BIC validation remain pending.
