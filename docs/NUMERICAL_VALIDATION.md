@@ -77,3 +77,23 @@ This is strong evidence that the failure of the unassisted reduced-grid
 passage is a nonadiabatic-following problem in the atomic direction. It is not
 yet proof of a laboratory-frame Bell-BIC protocol; the lab-frame comparison
 and instantaneous dressed BIC validation remain pending.
+
+## Development Two-Stage Protocol
+
+The full two-stage diagnostic starts from `|gg,0>`, applies a smooth local
+`pi` pulse on atom 1 for `xi*T_pi=2`, and then applies the CD-assisted Floquet
+passage for `xi*T=20`. The run is performed as one continuous ODE propagation
+in the enlarged basis `{|gg,0>, |eg,0>, |ge,0>, |gg,1_k>}`.
+
+For the same reduced grid, the preparation stage reaches `P_eg=1.000000` at
+the stage boundary. The final CD-assisted result is
+`C=0.995871`, `F_{Psi+}=0.995881`, and
+`F_{Psi+}^{(a)}=0.999990`, with norm error below `3e-13`. The comparison
+without CD remains at `C=0.018966`.
+
+The corresponding plot is written to:
+
+```text
+outputs/floquet/two_stage_bell_bic_protocol_dev.png
+outputs/floquet/two_stage_bell_bic_protocol_dev.pdf
+```

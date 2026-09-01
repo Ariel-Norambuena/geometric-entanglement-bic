@@ -88,6 +88,7 @@ addpath('scripts')
 run_dark_state_passage
 scan_passage_duration
 run_counterdiabatic_passage
+run_two_stage_bell_bic_protocol
 ```
 
 The reduced-grid development scan in `data/development/` is not a manuscript
@@ -98,6 +99,10 @@ the full instantaneous BIC branch, including photonic dressing.
 The counterdiabatic development script adds the minimal atomic correction
 `H_CD = thetaDot(t) sigma_y` and exports concurrence, protocol fidelity, and
 control plots to `outputs/floquet/`.
+
+The two-stage protocol script first prepares `|eg>` from `|gg>` with a local
+single-atom `pi` pulse and then runs the CD-assisted Floquet passage in one
+continuous dynamics.
 
 ## Numerical method
 
