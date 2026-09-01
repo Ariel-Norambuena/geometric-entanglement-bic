@@ -1,0 +1,63 @@
+{
+  "runMode": "paper",
+  "model": "two-stage central-sideband effective finite-mode dynamics",
+  "stageI": "local resonant pi pulse on atom 1, with u1=0 and u2=u0",
+  "stageII": "Floquet dark-state passage with optional H_CD = thetaDot(t) sigma_y",
+  "Nc": 2004,
+  "dimension": 2007,
+  "kConvention": "full Brillouin zone [-pi, pi)",
+  "Tprep": 2,
+  "Tpassage": 20,
+  "totalTime": 22,
+  "nu": 8,
+  "u0": 0.9,
+  "drivePhase": 1.5707963267948966,
+  "maxOmegaPiOverXi": 3.1415926535897931,
+  "maxOmegaCDOverXi": 0.073631077818510776,
+  "rtol": 1E-9,
+  "atol": 1E-11,
+  "cases": [
+    {
+      "name": "without_cd",
+      "counterdiabaticScale": 0,
+      "runtimeSeconds": 2.1832476,
+      "maxNormError": 2.0872192862952943E-13,
+      "afterPrepGroundPopulation": 4.2135110083609688E-20,
+      "afterPrepEgPopulation": 0.99999999999989919,
+      "afterPrepGePopulation": 8.15844728011894E-77,
+      "afterPrepPhotonicPopulation": 1.1667120734988287E-35,
+      "finalGroundPopulation": 1.1014409372270131E-19,
+      "finalAtomicSinglePopulation": 0.98572929120433872,
+      "finalPhotonicPopulation": 0.014270708795559119,
+      "finalConcurrence": 0.018965907833401695,
+      "finalConditionalConcurrence": 0.019240483165747908,
+      "finalBellPlusFidelity": 0.5023475995188702,
+      "finalConditionalBellPlusFidelity": 0.509620241582874,
+      "finalTargetConditionalFidelity": 0.50962024158287411,
+      "minimumPassageTargetConditionalFidelity": 0.50960703004424845
+    },
+    {
+      "name": "with_cd",
+      "counterdiabaticScale": 1,
+      "runtimeSeconds": 1.897415,
+      "maxNormError": 2.0872192862952943E-13,
+      "afterPrepGroundPopulation": 4.2135110083609688E-20,
+      "afterPrepEgPopulation": 0.99999999999989919,
+      "afterPrepGePopulation": 2.4710089188290448E-26,
+      "afterPrepPhotonicPopulation": 4.3103523173522662E-34,
+      "finalGroundPopulation": 1.1014409372270131E-19,
+      "finalAtomicSinglePopulation": 0.99589068503945943,
+      "finalPhotonicPopulation": 0.0041093149604440405,
+      "finalConcurrence": 0.99587079906131082,
+      "finalConditionalConcurrence": 0.99998003196691432,
+      "finalBellPlusFidelity": 0.99588074205038513,
+      "finalConditionalBellPlusFidelity": 0.99999001598345716,
+      "finalTargetConditionalFidelity": 0.99999001598345738,
+      "minimumPassageTargetConditionalFidelity": 0.99999000266499027
+    }
+  ],
+  "outputs": {
+    "png": "C:\\Users\\admin\\Dropbox (Personal)\\Geometric control of maximal entangled states via bound states in the continuum\\outputs\\floquet\\two_stage_bell_bic_protocol_paper.png",
+    "pdf": "C:\\Users\\admin\\Dropbox (Personal)\\Geometric control of maximal entangled states via bound states in the continuum\\outputs\\floquet\\two_stage_bell_bic_protocol_paper.pdf"
+  }
+}

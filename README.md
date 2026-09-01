@@ -104,6 +104,18 @@ The two-stage protocol script first prepares `|eg>` from `|gg>` with a local
 single-atom `pi` pulse and then runs the CD-assisted Floquet passage in one
 continuous dynamics.
 
+To regenerate the paper-ready two-stage figure, run:
+
+```matlab
+addpath('scripts')
+run_two_stage_bell_bic_protocol("paper")
+make_two_stage_bell_bic_paper_figure
+```
+
+The final figure is exported to `figures/Figure_TwoStage_Bell_BIC.pdf`,
+`figures/Figure_TwoStage_Bell_BIC.png`, and
+`figures/Figure_TwoStage_Bell_BIC.tif`.
+
 ## Numerical method
 
 For Fig. 3, the non-Markovian memory-kernel equation is solved through its

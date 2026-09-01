@@ -7,8 +7,9 @@ function summary = run_two_stage_bell_bic_protocol(runMode)
 %   Stage II: |eg,0> -> Bell-BIC atomic component with Floquet controls and
 %            the optional atomic counterdiabatic term.
 %
-% This is a development figure. It demonstrates the control principle in the
-% effective central-sideband model; laboratory-frame and dressed-BIC
+% In dev mode the script uses a reduced grid for rapid iteration. In paper
+% mode it uses the production full-Brillouin-zone grid and exports compact
+% source data for the paper figure. Laboratory-frame and dressed-BIC
 % validation remain separate checks.
 
 if nargin < 1
@@ -17,15 +18,21 @@ else
     runMode = string(runMode);
 end
 
-if runMode ~= "dev"
-    error('Only runMode="dev" is implemented at this stage.');
+if ~ismember(runMode, ["dev", "paper"])
+    error('runMode must be "dev" or "paper".');
 end
 
 scriptDir = fileparts(mfilename('fullpath'));
 projectRoot = fileparts(scriptDir);
 addpath(fullfile(projectRoot, 'src', 'matlab'));
 
-dataDir = fullfile(projectRoot, 'data', 'development');
+if runMode == "paper"
+    dataDir = fullfile(projectRoot, 'data', 'paper');
+    outputStem = 'two_stage_bell_bic_protocol_paper';
+else
+    dataDir = fullfile(projectRoot, 'data', 'development');
+    outputStem = 'two_stage_bell_bic_protocol_dev';
+end
 outputDir = fullfile(projectRoot, 'outputs', 'floquet');
 if ~exist(dataDir, 'dir')
     mkdir(dataDir);
@@ -34,7 +41,15 @@ if ~exist(outputDir, 'dir')
     mkdir(outputDir);
 end
 
-params.Nc = 4 * 51;
+if runMode == "paper"
+    params.Nc = 4 * 501;
+    numPrepTimes = 401;
+    numPassageTimes = 2001;
+else
+    params.Nc = 4 * 51;
+    numPrepTimes = 301;
+    numPassageTimes = 1501;
+end
 params.xi = 1.0;
 params.wc = 0.0;
 params.g = 0.1;
@@ -59,8 +74,8 @@ protocol = struct( ...
     'drivePhase', drivePhase, ...
     'piPulseArea', pi);
 
-tPrep = linspace(0, Tprep, 301);
-tPassage = Tprep + linspace(0, Tpassage, 1501);
+tPrep = linspace(0, Tprep, numPrepTimes);
+tPassage = Tprep + linspace(0, Tpassage, numPassageTimes);
 tEval = unique([tPrep tPassage]);
 
 caseSpecs = struct( ...
@@ -207,8 +222,8 @@ legend({'$\Omega_{\pi}(t)$', '$\Omega_{\rm CD}(t)$'}, ...
 set(gca, 'FontSize', 13, 'TickLabelInterpreter', 'latex');
 hide_axes_toolbar(gca);
 
-pngPath = fullfile(outputDir, 'two_stage_bell_bic_protocol_dev.png');
-pdfPath = fullfile(outputDir, 'two_stage_bell_bic_protocol_dev.pdf');
+pngPath = fullfile(outputDir, [outputStem '.png']);
+pdfPath = fullfile(outputDir, [outputStem '.pdf']);
 exportgraphics(fig, pngPath, 'Resolution', 300);
 exportgraphics(fig, pdfPath, 'ContentType', 'vector');
 
@@ -220,6 +235,7 @@ summary.stageI = "local resonant pi pulse on atom 1, with u1=0 and u2=u0";
 summary.stageII = "Floquet dark-state passage with optional H_CD = thetaDot(t) sigma_y";
 summary.Nc = model.Nc;
 summary.dimension = model.dimension + 1;
+summary.kConvention = model.kConvention;
 summary.Tprep = Tprep;
 summary.Tpassage = Tpassage;
 summary.totalTime = protocol.totalTime;
@@ -233,15 +249,26 @@ summary.atol = 1e-11;
 summary.cases = summaryCases;
 summary.outputs = struct('png', string(pngPath), 'pdf', string(pdfPath));
 
-matPath = fullfile(dataDir, 'two_stage_bell_bic_protocol_dev.mat');
-jsonPath = fullfile(dataDir, 'two_stage_bell_bic_protocol_dev_summary.json');
-save(matPath, 'tOut', 'psiAll', 'results', 'caseSpecs', 'u1Global', ...
-    'u2Global', 'omegaPi', 'omegaCD', 'targetConcurrence', 'summary', ...
-    'params', 'u0', 'Tprep', 'Tpassage', 'nu');
-write_json(jsonPath, summary);
+sourceData = make_source_table(tOut, params.xi, results, u1Global, u2Global, ...
+    omegaPi, omegaCD, targetConcurrence);
 
-fprintf('Two-stage protocol outputs written to:\n  %s\n  %s\n  %s\n  %s\n', ...
-    matPath, jsonPath, pngPath, pdfPath);
+matPath = fullfile(dataDir, [outputStem '.mat']);
+jsonPath = fullfile(dataDir, [outputStem '_summary.json']);
+csvPath = fullfile(dataDir, [outputStem '_source_data.csv']);
+if runMode == "paper"
+    save(matPath, 'tOut', 'results', 'caseSpecs', 'u1Global', 'u2Global', ...
+        'omegaPi', 'omegaCD', 'targetConcurrence', 'summary', ...
+        'params', 'u0', 'Tprep', 'Tpassage', 'nu');
+else
+    save(matPath, 'tOut', 'psiAll', 'results', 'caseSpecs', 'u1Global', ...
+        'u2Global', 'omegaPi', 'omegaCD', 'targetConcurrence', 'summary', ...
+        'params', 'u0', 'Tprep', 'Tpassage', 'nu');
+end
+write_json(jsonPath, summary);
+writetable(sourceData, csvPath);
+
+fprintf('Two-stage protocol outputs written to:\n  %s\n  %s\n  %s\n  %s\n  %s\n', ...
+    matPath, jsonPath, csvPath, pngPath, pdfPath);
 end
 
 function dpsi = two_stage_rhs(t, psi, model, controls, protocol, options)
@@ -383,4 +410,23 @@ function hide_axes_toolbar(ax)
 if isprop(ax, 'Toolbar') && ~isempty(ax.Toolbar)
     ax.Toolbar.Visible = 'off';
 end
+end
+
+function sourceData = make_source_table(t, xi, results, u1, u2, omegaPi, omegaCD, targetC)
+sourceData = table();
+sourceData.xi_t = xi * t(:);
+sourceData.P_gg_with_CD = results(2).obs.groundPopulation(:);
+sourceData.P_eg_with_CD = results(2).obs.egPopulation(:);
+sourceData.P_ge_with_CD = results(2).obs.gePopulation(:);
+sourceData.P_photon_with_CD = results(2).obs.photonicPopulation(:);
+sourceData.concurrence_target = targetC(:);
+sourceData.concurrence_without_CD = results(1).obs.concurrence(:);
+sourceData.concurrence_with_CD = results(2).obs.concurrence(:);
+sourceData.bell_fidelity_without_CD = results(1).obs.bellPlusFidelity(:);
+sourceData.bell_fidelity_with_CD = results(2).obs.bellPlusFidelity(:);
+sourceData.conditional_bell_fidelity_with_CD = results(2).obs.conditionalBellPlusFidelity(:);
+sourceData.u1 = u1(:);
+sourceData.u2 = u2(:);
+sourceData.Omega_pi_over_xi = omegaPi(:) / xi;
+sourceData.Omega_CD_over_xi = omegaCD(:) / xi;
 end
