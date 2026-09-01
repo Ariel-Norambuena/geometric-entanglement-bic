@@ -1,0 +1,33 @@
+description: Production-grid baseline for the previous giant-atom BIC Fig. 3 dynamics.
+model:
+  convention: positive_k_with_explicit_right_left_modes
+  k_interval: "[0, pi)"
+  nc_positive: 2004
+  hamiltonian_dimension: 4010
+parameters:
+  xi: 1.0
+  wc: 0.0
+  g_over_xi: 0.1
+  n1_ideal: 6
+  n2_ideal: 6
+  x1: 0
+  kstar0: pi/2
+  omega0: wc
+detunings:
+  fraction: 0.10
+  lambda:
+    n1: 6.6
+    n2: 6
+  theta: 0.1*2*pi
+  kstar: 1.1*kstar0
+sample_times_xi:
+  - 0
+  - 100
+  - 200
+  - 400
+  - 600
+  - 800
+  - 1000
+regression:
+  concurrence_tolerance: 5.0e-8
+  max_norm_error: 1.0e-8

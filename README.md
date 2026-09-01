@@ -15,6 +15,12 @@ and dynamical robustness of bound states in the continuum (BICs).
 - `Codes/Figure3_Left_Panel.m` reproduces the exact concurrence dynamics and
   Markovian exponential benchmarks.
 - `Codes/Figure3_Right_Panel.m` reproduces the on-shell decay-rate maps.
+- `scripts/reproduce_previous_paper_baseline.m` writes or verifies a compact
+  production-grid regression baseline for the previous Fig. 3 dynamics.
+- `src/matlab/` contains the first development modules for the new
+  Floquet-controlled Bell-BIC project.
+- `docs/` records the numerical conventions, validation status, and scientific
+  caveats for the Floquet extension.
 
 All generated figures are written to `outputs/`.
 
@@ -51,6 +57,41 @@ Figure3_Left_Panel
 
 Unset the variable, or set it to `0`, before regenerating the manuscript
 figure.
+
+## Baseline regression
+
+The previous-paper Fig. 3 left-panel dynamics are frozen in
+`data/baseline_previous_paper.json`. To verify that later Floquet development
+does not silently change the old result, run:
+
+```matlab
+run('tests/test_previous_paper_regression.m')
+```
+
+This test recomputes selected production-grid observables and checks the
+concurrence against the stored baseline.
+
+## Floquet Bell-BIC development
+
+The Floquet extension currently uses a full-Brillouin-zone finite-mode model
+with state ordering `psi = [c1, c2, phi_k]`. The implementation keeps the
+laboratory-frame driven model, rotating-frame micromotion, central-sideband
+effective model, and Markov diagnostics conceptually separate.
+
+Useful development checks:
+
+```matlab
+run('tests/test_floquet_controls.m')
+run('tests/test_effective_rhs_static_limit.m')
+addpath('scripts')
+run_dark_state_passage
+scan_passage_duration
+```
+
+The reduced-grid development scan in `data/development/` is not a manuscript
+claim. It currently shows that the simple unassisted `u1/u2` passage does not
+yet prepare a high-fidelity Bell-BIC; the next scientific step is validating
+the full instantaneous BIC branch, including photonic dressing.
 
 ## Numerical method
 

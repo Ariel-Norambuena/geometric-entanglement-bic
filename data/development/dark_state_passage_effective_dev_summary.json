@@ -1,0 +1,31 @@
+{
+  "runMode": "dev",
+  "model": "central-sideband effective finite-mode dynamics",
+  "Nc": 204,
+  "dimension": 206,
+  "T": 20,
+  "nu": 8,
+  "u0": 0.9,
+  "rtol": 1E-9,
+  "atol": 1E-11,
+  "maxStep": 0.02,
+  "runtimeSeconds": 0.3705563,
+  "finalNormError": 1.9984014443252818E-15,
+  "maxNormError": 2.886579864025407E-15,
+  "finalAtomicPopulation": 0.98572929120424191,
+  "finalPhotonicPopulation": 0.014270708795760105,
+  "finalConcurrence": 0.018965907833185157,
+  "finalConditionalConcurrence": 0.019240483165530124,
+  "finalBellPlusConditionalFidelity": 0.509620241582765,
+  "finalTargetConditionalFidelity": 0.50962024158276509,
+  "sideband": {
+    "deltaF": 6,
+    "maxBareCoupling": 0.014002800840280098,
+    "maxSidebandCoupling": 0.0081476217159852423,
+    "maxBetaDot": 0.10627649674682375,
+    "deltaFOverSidebandCoupling": 736.41121411273775,
+    "deltaFOverBetaDot": 56.456509046336436,
+    "mMax": 6,
+    "numTimeSamples": 101
+  }
+}

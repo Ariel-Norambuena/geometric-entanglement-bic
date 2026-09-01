@@ -134,23 +134,25 @@ B_theta.Cexp = exp_prediction(B_theta.t, B_theta.C(1), gammaMinusTheta);
 B_kdet.Cexp = exp_prediction(B_kdet.t, B_kdet.C(1), gammaMinusKdet);
 
 %% Plot exact dynamics and Markov overlays
-fig = figure('Color', 'w', 'Units', 'centimeters', 'Position', [2 2 24 11]);
-tiledlayout(fig, 1, 2, 'Padding', 'loose', 'TileSpacing', 'compact');
+fig = figure('Color', 'w', 'Units', 'centimeters', 'Position', [2 2 16 18]);
+tiledlayout(fig, 2, 1, 'Padding', 'compact', 'TileSpacing', 'compact');
 
 nexttile; hold on; box on; grid on;
 h1 = plot(xi * A_ideal.t, A_ideal.C, 'LineWidth', 2.2);
 h2 = plot(xi * A_lam.t, A_lam.C, 'LineWidth', 1.6);
 h3 = plot(xi * A_theta.t, A_theta.C, 'LineWidth', 1.6);
 h4 = plot(xi * A_kdet.t, A_kdet.C, 'LineWidth', 1.6);
-plot(xi * A_ideal.t, A_ideal.Cexp, '--', 'LineWidth', 1.6, 'Color', h1.Color);
-plot(xi * A_lam.t, A_lam.Cexp, '--', 'LineWidth', 1.6, 'Color', h2.Color);
-plot(xi * A_theta.t, A_theta.Cexp, '--', 'LineWidth', 1.6, 'Color', h3.Color);
-plot(xi * A_kdet.t, A_kdet.Cexp, '--', 'LineWidth', 1.6, 'Color', h4.Color);
+plot(xi * A_ideal.t, A_ideal.Cexp, '--', 'LineWidth', 1.8, 'Color', h1.Color, 'HandleVisibility', 'off');
+plot(xi * A_lam.t, A_lam.Cexp, '--', 'LineWidth', 1.8, 'Color', h2.Color, 'HandleVisibility', 'off');
+plot(xi * A_theta.t, A_theta.Cexp, '--', 'LineWidth', 1.8, 'Color', h3.Color, 'HandleVisibility', 'off');
+plot(xi * A_kdet.t, A_kdet.Cexp, '--', 'LineWidth', 1.8, 'Color', h4.Color, 'HandleVisibility', 'off');
 xlabel('$\xi t$', 'Interpreter', 'latex');
 ylabel('$\mathcal{C}(t)$', 'Interpreter', 'latex');
-title('$|\Psi(0)\rangle = |\Psi^{+}\rangle$', 'Interpreter', 'latex', 'FontSize', 11);
+xlim([0 xi * tmax]);
 ylim([-0.05 1.05]);
-set(gca, 'FontSize', 14, 'TickLabelInterpreter', 'latex');
+text(0.44 * xi * tmax, 0.58, '$|\Psi(0)\rangle = |\Psi^{+}\rangle$', ...
+    'Interpreter', 'latex', 'FontSize', 18);
+set(gca, 'FontSize', 18, 'TickLabelInterpreter', 'latex');
 hide_axes_toolbar(gca);
 
 nexttile; hold on; box on; grid on;
@@ -158,30 +160,28 @@ j1 = plot(xi * B_ideal.t, B_ideal.C, 'LineWidth', 2.2);
 j2 = plot(xi * B_lam.t, B_lam.C, 'LineWidth', 1.6);
 j3 = plot(xi * B_theta.t, B_theta.C, 'LineWidth', 1.6);
 j4 = plot(xi * B_kdet.t, B_kdet.C, 'LineWidth', 1.6);
-plot(xi * B_ideal.t, B_ideal.Cexp, '--', 'LineWidth', 1.6, 'Color', j1.Color);
-plot(xi * B_lam.t, B_lam.Cexp, '--', 'LineWidth', 1.6, 'Color', j2.Color);
-plot(xi * B_theta.t, B_theta.Cexp, '--', 'LineWidth', 1.6, 'Color', j3.Color);
-plot(xi * B_kdet.t, B_kdet.Cexp, '--', 'LineWidth', 1.6, 'Color', j4.Color);
+plot(xi * B_ideal.t, B_ideal.Cexp, '--', 'LineWidth', 1.8, 'Color', j1.Color, 'HandleVisibility', 'off');
+plot(xi * B_lam.t, B_lam.Cexp, '--', 'LineWidth', 1.8, 'Color', j2.Color, 'HandleVisibility', 'off');
+plot(xi * B_theta.t, B_theta.Cexp, '--', 'LineWidth', 1.8, 'Color', j3.Color, 'HandleVisibility', 'off');
+plot(xi * B_kdet.t, B_kdet.Cexp, '--', 'LineWidth', 1.8, 'Color', j4.Color, 'HandleVisibility', 'off');
 xlabel('$\xi t$', 'Interpreter', 'latex');
 ylabel('$\mathcal{C}(t)$', 'Interpreter', 'latex');
-title('$|\Psi(0)\rangle = |\Psi^{-}\rangle$', 'Interpreter', 'latex', 'FontSize', 11);
+xlim([0 xi * tmax]);
 ylim([-0.05 1.05]);
-set(gca, 'FontSize', 14, 'TickLabelInterpreter', 'latex');
+text(0.44 * xi * tmax, 0.48, '$|\Psi(0)\rangle = |\Psi^{-}\rangle$', ...
+    'Interpreter', 'latex', 'FontSize', 18);
+set(gca, 'FontSize', 18, 'TickLabelInterpreter', 'latex');
 hide_axes_toolbar(gca);
 
-lg = legend({ ...
-    'ideal (num)', ...
-    sprintf('$\\lambda=1(1+%.0f\\%%)$ (num)', 100*pct), ...
-    '$\delta\theta=0.1\times 2\pi$ (num)', ...
-    sprintf('$k^{\\star}=k^{\\star}_0(1+%.0f\\%%)$ (num)', 100*pct), ...
-    'ideal (exp)', ...
-    '$\lambda$ detune (exp)', ...
-    '$\theta$ detune (exp)', ...
-    '$k^{\star}$ detune (exp)'}, ...
+lg = legend([j1 j2 j3 j4], { ...
+    'ideal', ...
+    '$\delta\lambda=0.1\lambda$', ...
+    '$\delta\theta=0.1\times2\pi$', ...
+    '$\delta k^{\star}=0.1k^{\star}$'}, ...
     'Interpreter', 'latex');
-lg.Layout.Tile = 'south';
-lg.NumColumns = 4;
-lg.FontSize = 12;
+lg.Location = 'north';
+lg.NumColumns = 2;
+lg.FontSize = 13;
 
 %% Export
 pdfPath = fullfile(outputDir, ['Figure3_Left_Panel' outputSuffix '.pdf']);
@@ -264,29 +264,25 @@ function out = simulate_case_exact(k, wk, Omega, g, x1, Dx, n1, n2, psi0Atomic, 
     psi0(1:2) = psi0Atomic(1:2);
 
     [V, D] = eig(H, 'vector');
-    amplitudes = V' * psi0;
-    atomicRows = V(1:2, :);
+    amplitudes = V \ psi0;
 
     numTimes = numel(tvec);
     c1 = zeros(numTimes, 1);
     c2 = zeros(numTimes, 1);
+    normTotal = zeros(numTimes, 1);
     chunkSize = max(1, min(chunkSize, numTimes));
 
     for first = 1:chunkSize:numTimes
         last = min(first + chunkSize - 1, numTimes);
         idx = first:last;
         phase = exp(-1i * D(:) * tvec(idx));
-        atomicState = atomicRows * (amplitudes .* phase);
-        c1(idx) = atomicState(1, :).';
-        c2(idx) = atomicState(2, :).';
+        psiT = V * (amplitudes .* phase);
+        c1(idx) = psiT(1, :).';
+        c2(idx) = psiT(2, :).';
+        normTotal(idx) = sum(abs(psiT).^2, 1).';
     end
 
     concurrence = 2 * abs(c1 .* c2);
-
-    % The waveguide population is reconstructed from unitarity for a compact
-    % diagnostic without storing all photonic amplitudes at every time.
-    photonPopulation = max(0, 1 - abs(c1).^2 - abs(c2).^2);
-    normTotal = abs(c1).^2 + abs(c2).^2 + photonPopulation;
 
     out.t = tvec(:);
     out.C = concurrence;
