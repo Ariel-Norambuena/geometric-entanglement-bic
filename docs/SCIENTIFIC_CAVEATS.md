@@ -49,3 +49,14 @@ The first reduced-grid result shows that this atomic CD term almost perfectly
 tracks the intended atomic path in the effective model. In manuscript language,
 this should be framed as evidence for the control principle and as a benchmark
 for nonadiabatic error, not yet as a complete microscopic protocol.
+
+## K-Mismatch Robustness
+
+The PRA-style passive `K = pi/2` benchmark and the Floquet-CD robustness scan
+are not identical physical calculations. The former is a Markovian passive
+storage model with fixed collective rates, while the latter is an effective
+central-sideband finite-mode preparation model with active control. Use the
+comparison to show the sensitivity of passive phase matching and the promise
+of active controlled preparation, but do not state that it proves complete
+laboratory-frame robustness until drive errors, sideband leakage, and
+microscopic parameter noise have been scanned.

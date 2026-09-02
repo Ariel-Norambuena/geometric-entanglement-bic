@@ -89,6 +89,7 @@ run_dark_state_passage
 scan_passage_duration
 run_counterdiabatic_passage
 run_two_stage_bell_bic_protocol
+scan_k_robustness_comparison
 ```
 
 The reduced-grid development scan in `data/development/` is not a manuscript
@@ -115,6 +116,17 @@ make_two_stage_bell_bic_paper_figure
 The final figure is exported to `figures/Figure_TwoStage_Bell_BIC.pdf`,
 `figures/Figure_TwoStage_Bell_BIC.png`, and
 `figures/Figure_TwoStage_Bell_BIC.tif`.
+
+To compare the \(K=\pi/2\) sensitivity of a passive PRA-style benchmark with
+the two-stage Floquet-CD protocol, run:
+
+```matlab
+addpath('scripts')
+scan_k_robustness_comparison("paper")
+```
+
+This exports `figures/Figure_K_Robustness_Comparison.pdf` and matching
+source data under `data/paper/`.
 
 ## Numerical method
 

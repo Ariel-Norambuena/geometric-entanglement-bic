@@ -97,3 +97,40 @@ The corresponding plot is written to:
 outputs/floquet/two_stage_bell_bic_protocol_dev.png
 outputs/floquet/two_stage_bell_bic_protocol_dev.pdf
 ```
+
+## Production K-Mismatch Robustness Comparison
+
+The robustness scan in `scripts/scan_k_robustness_comparison.m` reproduces the
+PRA-style passive Markovian benchmark from `Effect_dk_Bell_states.m` and
+compares it with the two-stage Floquet-CD protocol. The production run uses:
+
+```text
+Nc = 2004
+nu/xi = 8
+u0 = 0.9
+xi*T_pi = 2
+xi*T = 20
+deltaK/K0 in {-0.10, -0.075, ..., 0.075, 0.10}
+```
+
+In the passive benchmark, the fidelity at `xi*t=500` drops from `0.940` at
+`deltaK/K0=0.005` to `0.782` at `0.01`, `3.8e-3` at `0.05`, and `1.1e-7` at
+`0.10`. In the effective Floquet-CD benchmark, the final Bell fidelity remains
+above `0.992` for every tested mismatch with `|deltaK|/K0 <= 0.10`. The same
+scan gives final concurrence and atomic population above `0.992` over that
+window.
+
+The paper-ready figure and source data are written to:
+
+```text
+figures/Figure_K_Robustness_Comparison.pdf
+figures/Figure_K_Robustness_Comparison.png
+figures/Figure_K_Robustness_Comparison.tif
+data/paper/k_robustness_comparison_paper_source_data.csv
+data/paper/k_robustness_comparison_paper_pra_fidelity_curves.csv
+```
+
+This comparison is a robustness design benchmark, not yet a full microscopic
+claim. The passive and driven calculations use different effective
+descriptions, so the next validation step is a laboratory-frame robustness scan
+including drive errors, finite sideband separation, and parameter noise.

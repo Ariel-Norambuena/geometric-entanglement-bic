@@ -1,0 +1,371 @@
+{
+  "runMode": "dev",
+  "description": "PRA-style K sensitivity versus two-stage Floquet-CD robustness",
+  "k0": 1.5707963267948966,
+  "deltaFractions": [
+    -0.1,
+    -0.05,
+    -0.01,
+    0,
+    0.01,
+    0.05,
+    0.1
+  ],
+  "durationGridXi": [
+    5,
+    10,
+    20
+  ],
+  "TprepXi": 2,
+  "TreferenceXi": 20,
+  "u0": 0.9,
+  "nuOverXi": 8,
+  "params": {
+    "Nc": 204,
+    "xi": 1,
+    "wc": 0,
+    "g": 0.1,
+    "n1": 6,
+    "n2": 6,
+    "x1": 0,
+    "Dx": 2,
+    "Omega0": 0
+  },
+  "pra": {
+    "description": "Markovian passive Bell-BIC benchmark following Effect_dk_Bell_states.m",
+    "deltaFractions": [
+      0.001,
+      0.005,
+      0.01,
+      0.05,
+      0.1
+    ],
+    "initialFidelity": [
+      0.99999753260092894,
+      0.99993831624082985,
+      0.99975328018286558,
+      0.99384417029756855,
+      0.9755282581475766
+    ],
+    "finalFidelity": [
+      0.99753327830512206,
+      0.94017938630790443,
+      0.781927043405489,
+      0.0037946043543306014,
+      1.0793473102544221E-7
+    ],
+    "parameters": {
+      "gOverXi": 0.5,
+      "n": 8,
+      "dx": 2,
+      "k0": 1.5707963267948966,
+      "tfXi": 500
+    }
+  },
+  "withoutCD": [
+    {
+      "deltaKOverK0": -0.099999999999999978,
+      "K": 1.4137166941154069,
+      "detunedOmegaOverXi": -0.31286893008046185,
+      "counterdiabaticScale": 0,
+      "TpassageXi": 20,
+      "afterPrepEgPopulation": 0.99999999999461542,
+      "finalAtomicSinglePopulation": 0.964930547513315,
+      "finalPhotonicPopulation": 0.035069452481300112,
+      "finalConcurrence": 0.045694406235030592,
+      "finalConditionalConcurrence": 0.047355124524545184,
+      "finalBellPlusFidelity": 0.50267524228962512,
+      "finalConditionalBellPlusFidelity": 0.52094447997842952,
+      "maxNormError": 5.8634208599528392E-12
+    },
+    {
+      "deltaKOverK0": -0.050000000000000044,
+      "K": 1.4922565104551517,
+      "detunedOmegaOverXi": -0.15691819145569,
+      "counterdiabaticScale": 0,
+      "TpassageXi": 20,
+      "afterPrepEgPopulation": 0.99999999999461542,
+      "finalAtomicSinglePopulation": 0.98022929695885685,
+      "finalPhotonicPopulation": 0.019770703035757967,
+      "finalConcurrence": 0.028671791335249951,
+      "finalConditionalConcurrence": 0.029250086101490387,
+      "finalBellPlusFidelity": 0.50256430913565242,
+      "finalConditionalBellPlusFidelity": 0.51270076368340434,
+      "maxNormError": 5.8634208599528392E-12
+    },
+    {
+      "deltaKOverK0": -0.0099999999999998979,
+      "K": 1.5550883635269477,
+      "detunedOmegaOverXi": -0.031414634623641295,
+      "counterdiabaticScale": 0,
+      "TpassageXi": 20,
+      "afterPrepEgPopulation": 0.99999999999461542,
+      "finalAtomicSinglePopulation": 0.985505305636315,
+      "finalPhotonicPopulation": 0.014494694358300685,
+      "finalConcurrence": 0.019458133559374313,
+      "finalConditionalConcurrence": 0.019744321464419418,
+      "finalBellPlusFidelity": 0.50235818208473737,
+      "finalConditionalBellPlusFidelity": 0.50974680624411028,
+      "maxNormError": 5.8634208599528392E-12
+    },
+    {
+      "deltaKOverK0": 0,
+      "K": 1.5707963267948966,
+      "detunedOmegaOverXi": -1.2246467991473532E-16,
+      "counterdiabaticScale": 0,
+      "TpassageXi": 20,
+      "afterPrepEgPopulation": 0.99999999999461542,
+      "finalAtomicSinglePopulation": 0.985729291199125,
+      "finalPhotonicPopulation": 0.014270708795483669,
+      "finalConcurrence": 0.018965907833301578,
+      "finalConditionalConcurrence": 0.019240483165748105,
+      "finalBellPlusFidelity": 0.50234759951621322,
+      "finalConditionalBellPlusFidelity": 0.509620241582874,
+      "maxNormError": 5.8634208599528392E-12
+    },
+    {
+      "deltaKOverK0": 0.010000000000000009,
+      "K": 1.5865042900628454,
+      "detunedOmegaOverXi": 0.031414634623641052,
+      "counterdiabaticScale": 0,
+      "TpassageXi": 20,
+      "afterPrepEgPopulation": 0.99999999999461542,
+      "finalAtomicSinglePopulation": 0.985505305636315,
+      "finalPhotonicPopulation": 0.014494694358300678,
+      "finalConcurrence": 0.019458133559374355,
+      "finalConditionalConcurrence": 0.01974432146441946,
+      "finalBellPlusFidelity": 0.50235818208473759,
+      "finalConditionalBellPlusFidelity": 0.50974680624411051,
+      "maxNormError": 5.8634208599528392E-12
+    },
+    {
+      "deltaKOverK0": 0.050000000000000044,
+      "K": 1.6493361431346414,
+      "detunedOmegaOverXi": 0.15691819145568975,
+      "counterdiabaticScale": 0,
+      "TpassageXi": 20,
+      "afterPrepEgPopulation": 0.99999999999461542,
+      "finalAtomicSinglePopulation": 0.98022929695885663,
+      "finalPhotonicPopulation": 0.019770703035757939,
+      "finalConcurrence": 0.028671791335249937,
+      "finalConditionalConcurrence": 0.02925008610149038,
+      "finalBellPlusFidelity": 0.5025643091356522,
+      "finalConditionalBellPlusFidelity": 0.51270076368340423,
+      "maxNormError": 5.8634208599528392E-12
+    },
+    {
+      "deltaKOverK0": 0.10000000000000009,
+      "K": 1.7278759594743864,
+      "detunedOmegaOverXi": 0.31286893008046207,
+      "counterdiabaticScale": 0,
+      "TpassageXi": 20,
+      "afterPrepEgPopulation": 0.99999999999461542,
+      "finalAtomicSinglePopulation": 0.96493054751331475,
+      "finalPhotonicPopulation": 0.035069452481300153,
+      "finalConcurrence": 0.045694406235030641,
+      "finalConditionalConcurrence": 0.047355124524545246,
+      "finalBellPlusFidelity": 0.5026752422896249,
+      "finalConditionalBellPlusFidelity": 0.52094447997842941,
+      "maxNormError": 5.8634208599528392E-12
+    }
+  ],
+  "withCDReference": [
+    {
+      "deltaKOverK0": -0.099999999999999978,
+      "K": 1.4137166941154069,
+      "detunedOmegaOverXi": -0.31286893008046185,
+      "counterdiabaticScale": 1,
+      "TpassageXi": 20,
+      "afterPrepEgPopulation": 0.99999999999461542,
+      "finalAtomicSinglePopulation": 0.9921386357510773,
+      "finalPhotonicPopulation": 0.0078613642435387179,
+      "finalConcurrence": 0.9921039455539874,
+      "finalConditionalConcurrence": 0.999965034929757,
+      "finalBellPlusFidelity": 0.99210197139945044,
+      "finalConditionalBellPlusFidelity": 0.99996304513270051,
+      "maxNormError": 5.8634208599528392E-12
+    },
+    {
+      "deltaKOverK0": -0.050000000000000044,
+      "K": 1.4922565104551517,
+      "detunedOmegaOverXi": -0.15691819145569,
+      "counterdiabaticScale": 1,
+      "TpassageXi": 20,
+      "afterPrepEgPopulation": 0.99999999999461542,
+      "finalAtomicSinglePopulation": 0.99516065609982918,
+      "finalPhotonicPopulation": 0.0048393438947820838,
+      "finalConcurrence": 0.99513752613270767,
+      "finalConditionalConcurrence": 0.99997675755469262,
+      "finalBellPlusFidelity": 0.99514414586098832,
+      "finalConditionalBellPlusFidelity": 0.99998340947389786,
+      "maxNormError": 5.8634208599528392E-12
+    },
+    {
+      "deltaKOverK0": -0.0099999999999998979,
+      "K": 1.5550883635269477,
+      "detunedOmegaOverXi": -0.031414634623641295,
+      "counterdiabaticScale": 1,
+      "TpassageXi": 20,
+      "afterPrepEgPopulation": 0.99999999999461542,
+      "finalAtomicSinglePopulation": 0.99586454885412867,
+      "finalPhotonicPopulation": 0.0041354511404866224,
+      "finalConcurrence": 0.99584453888171587,
+      "finalConditionalConcurrence": 0.9999799069336931,
+      "finalBellPlusFidelity": 0.99585434498970715,
+      "finalConditionalBellPlusFidelity": 0.999989753762765,
+      "maxNormError": 5.8634208599528392E-12
+    },
+    {
+      "deltaKOverK0": 0,
+      "K": 1.5707963267948966,
+      "detunedOmegaOverXi": -1.2246467991473532E-16,
+      "counterdiabaticScale": 1,
+      "TpassageXi": 20,
+      "afterPrepEgPopulation": 0.99999999999461542,
+      "finalAtomicSinglePopulation": 0.99589068503419376,
+      "finalPhotonicPopulation": 0.00410931496042221,
+      "finalConcurrence": 0.99587079905606568,
+      "finalConditionalConcurrence": 0.99998003196693486,
+      "finalBellPlusFidelity": 0.99588074204512989,
+      "finalConditionalBellPlusFidelity": 0.9999900159834676,
+      "maxNormError": 5.8634208599528392E-12
+    },
+    {
+      "deltaKOverK0": 0.010000000000000009,
+      "K": 1.5865042900628454,
+      "detunedOmegaOverXi": 0.031414634623641052,
+      "counterdiabaticScale": 1,
+      "TpassageXi": 20,
+      "afterPrepEgPopulation": 0.99999999999461542,
+      "finalAtomicSinglePopulation": 0.99586454885412923,
+      "finalPhotonicPopulation": 0.0041354511404866215,
+      "finalConcurrence": 0.99584453888171653,
+      "finalConditionalConcurrence": 0.99997990693369321,
+      "finalBellPlusFidelity": 0.99585434498970782,
+      "finalConditionalBellPlusFidelity": 0.99998975376276511,
+      "maxNormError": 5.8634208599528392E-12
+    },
+    {
+      "deltaKOverK0": 0.050000000000000044,
+      "K": 1.6493361431346414,
+      "detunedOmegaOverXi": 0.15691819145568975,
+      "counterdiabaticScale": 1,
+      "TpassageXi": 20,
+      "afterPrepEgPopulation": 0.99999999999461542,
+      "finalAtomicSinglePopulation": 0.99516065609982918,
+      "finalPhotonicPopulation": 0.0048393438947820829,
+      "finalConcurrence": 0.99513752613270789,
+      "finalConditionalConcurrence": 0.99997675755469284,
+      "finalBellPlusFidelity": 0.99514414586098832,
+      "finalConditionalBellPlusFidelity": 0.99998340947389786,
+      "maxNormError": 5.8634208599528392E-12
+    },
+    {
+      "deltaKOverK0": 0.10000000000000009,
+      "K": 1.7278759594743864,
+      "detunedOmegaOverXi": 0.31286893008046207,
+      "counterdiabaticScale": 1,
+      "TpassageXi": 20,
+      "afterPrepEgPopulation": 0.99999999999461542,
+      "finalAtomicSinglePopulation": 0.99213863575107752,
+      "finalPhotonicPopulation": 0.0078613642435387265,
+      "finalConcurrence": 0.99210394555398773,
+      "finalConditionalConcurrence": 0.99996503492975708,
+      "finalBellPlusFidelity": 0.99210197139945111,
+      "finalConditionalBellPlusFidelity": 0.999963045132701,
+      "maxNormError": 5.8634208599528392E-12
+    }
+  ],
+  "fidelityGrid": [
+    [
+      0.99136913917554281,
+      0.99245248878631553,
+      0.99280553491616064,
+      0.99282031104926316,
+      0.99280553491616252,
+      0.9924524887863162,
+      0.99136913917554315
+    ],
+    [
+      0.99199132638861909,
+      0.99452101611717125,
+      0.99526775225034081,
+      0.99529807155003858,
+      0.99526775225034081,
+      0.99452101611717192,
+      0.99199132638861942
+    ],
+    [
+      0.99210197139945044,
+      0.99514414586098832,
+      0.99585434498970715,
+      0.99588074204512989,
+      0.99585434498970782,
+      0.99514414586098832,
+      0.99210197139945111
+    ]
+  ],
+  "concurrenceGrid": [
+    [
+      0.99136159492332365,
+      0.9924452916618216,
+      0.99279844965407416,
+      0.99281323045459435,
+      0.99279844965407615,
+      0.99244529166182227,
+      0.99136159492332387
+    ],
+    [
+      0.99198048968059882,
+      0.994510889997259,
+      0.995257768439171,
+      0.995288092714021,
+      0.99525776843917091,
+      0.99451088999725934,
+      0.991980489680599
+    ],
+    [
+      0.9921039455539874,
+      0.99513752613270767,
+      0.99584453888171587,
+      0.99587079905606568,
+      0.99584453888171653,
+      0.99513752613270789,
+      0.99210394555398773
+    ]
+  ],
+  "atomicPopulationGrid": [
+    [
+      0.99137671440555419,
+      0.99245969542316592,
+      0.99281262058347375,
+      0.99282739164393186,
+      0.99281262058347575,
+      0.9924596954231667,
+      0.99137671440555453
+    ],
+    [
+      0.99200660358820691,
+      0.99453234372570554,
+      0.99527778535327016,
+      0.99530805038605652,
+      0.99527778535326994,
+      0.99453234372570587,
+      0.99200660358820714
+    ],
+    [
+      0.9921386357510773,
+      0.99516065609982918,
+      0.99586454885412867,
+      0.99589068503419376,
+      0.99586454885412923,
+      0.99516065609982918,
+      0.99213863575107752
+    ]
+  ],
+  "outputs": {
+    "pdf": "C:\\Users\\admin\\Dropbox (Personal)\\Geometric control of maximal entangled states via bound states in the continuum\\figures\\Figure_K_Robustness_Comparison.pdf",
+    "png": "C:\\Users\\admin\\Dropbox (Personal)\\Geometric control of maximal entangled states via bound states in the continuum\\figures\\Figure_K_Robustness_Comparison.png",
+    "tiff": "C:\\Users\\admin\\Dropbox (Personal)\\Geometric control of maximal entangled states via bound states in the continuum\\figures\\Figure_K_Robustness_Comparison.tif"
+  }
+}
