@@ -46,8 +46,6 @@ physical interpretation to the poor transfer.
 ## Pending Validation Before Scientific Claims
 
 - Production-grid dark-state-passage duration scans.
-- Full laboratory-frame versus effective-model comparison after removing
-  micromotion.
 - Frozen instantaneous BIC branch construction, including photonic dressing.
 - Real-space separation of localized photonic dressing from outgoing radiation.
 - Solver tolerance convergence.
@@ -134,3 +132,38 @@ This comparison is a robustness design benchmark, not yet a full microscopic
 claim. The passive and driven calculations use different effective
 descriptions, so the next validation step is a laboratory-frame robustness scan
 including drive errors, finite sideband separation, and parameter noise.
+
+## Production Laboratory-Frame Floquet Validation
+
+The central-sideband effective passage was validated against the microscopic
+laboratory-frame finite-mode dynamics in
+`scripts/validate_floquet_effective_model.m`. The validation isolates the
+Floquet passage after the local `|eg>` preparation and includes the CD term in
+both descriptions. The laboratory-frame state is transformed to the slow frame
+with the local micromotion phases before comparison.
+
+The production run uses:
+
+```text
+Nc = 2004
+nu/xi = 8
+u0 = 0.9
+xi*T = 20
+g/xi = 0.1
+```
+
+The final effective and laboratory-frame slow-frame Bell fidelities are
+`0.995881` and `0.995179`, respectively. The maximum pointwise Bell-fidelity
+difference is `1.17e-3`, and the maximum slow-frame state infidelity is
+`1.70e-3`. The sideband diagnostic gives
+`Delta_F/max|g_m| = 2308` and `Delta_F/max|betaDot| = 56.4`.
+
+The paper-ready validation figure and source data are written to:
+
+```text
+figures/Figure_Floquet_Effective_Validation.pdf
+figures/Figure_Floquet_Effective_Validation.png
+figures/Figure_Floquet_Effective_Validation.tif
+data/paper/floquet_effective_validation_paper_source_data.csv
+data/paper/floquet_effective_validation_paper_summary.json
+```

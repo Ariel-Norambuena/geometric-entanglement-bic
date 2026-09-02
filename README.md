@@ -84,18 +84,20 @@ Useful development checks:
 run('tests/test_floquet_controls.m')
 run('tests/test_effective_rhs_static_limit.m')
 run('tests/test_counterdiabatic_atomic_limit.m')
+run('tests/test_lab_frame_cd_micromotion.m')
 addpath('scripts')
 run_dark_state_passage
 scan_passage_duration
 run_counterdiabatic_passage
 run_two_stage_bell_bic_protocol
 scan_k_robustness_comparison
+validate_floquet_effective_model
 ```
 
 The reduced-grid development scan in `data/development/` is not a manuscript
 claim. It currently shows that the simple unassisted `u1/u2` passage does not
-yet prepare a high-fidelity Bell-BIC; the next scientific step is validating
-the full instantaneous BIC branch, including photonic dressing.
+yet prepare a high-fidelity Bell-BIC; the remaining scientific step is
+validating the full instantaneous BIC branch, including photonic dressing.
 
 The counterdiabatic development script adds the minimal atomic correction
 `H_CD = thetaDot(t) sigma_y` and exports concurrence, protocol fidelity, and
@@ -126,6 +128,17 @@ scan_k_robustness_comparison("paper")
 ```
 
 This exports `figures/Figure_K_Robustness_Comparison.pdf` and matching
+source data under `data/paper/`.
+
+To validate the central-sideband Floquet model against the exact finite-mode
+laboratory-frame dynamics, run:
+
+```matlab
+addpath('scripts')
+validate_floquet_effective_model("paper")
+```
+
+This exports `figures/Figure_Floquet_Effective_Validation.pdf` and matching
 source data under `data/paper/`.
 
 ## Numerical method

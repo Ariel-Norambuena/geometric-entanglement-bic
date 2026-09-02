@@ -1,0 +1,39 @@
+\subsection{Numerical validation of the effective Floquet model}
+\label{subsec:floquet_effective_validation}
+
+To validate the central-sideband description used in the control protocol, we
+compare Eq.~\eqref{Hamiltonian} with the effective Hamiltonian in a finite-mode
+calculation. The comparison is performed during the Floquet passage stage,
+starting from the locally prepared state \(|e,g,0\rangle\), and using the same
+parameters employed below. In the laboratory-frame simulation the full
+time-dependent frequencies \(\Omega_i(t)\) are retained, so all fast Floquet
+oscillations are present in the numerical dynamics. The laboratory-frame state
+is then transformed to the slow frame through
+\(c_i^{\rm slow}(t)=e^{i\beta_i(t)\sin(\nu t)}c_i^{\rm lab}(t)\), before
+comparing it with the central-sideband effective state. The counterdiabatic
+coupling is included in both descriptions, with the corresponding micromotion
+phases in the laboratory frame.
+
+Figure~\ref{fig:floquet_effective_validation} shows that the exact
+laboratory-frame finite-mode dynamics and the effective model agree throughout
+the Bell-BIC passage. For \(N_c=2004\), \(\nu/\xi=8\), \(u_0=0.9\), and
+\(\xi T=20\), the maximum pointwise difference is
+\(\max_t|\Delta F_{\Psi^+}|=1.17\times10^{-3}\) and the maximum slow-frame
+state infidelity is \(1.70\times10^{-3}\). The final Bell fidelity is
+\(F_{\Psi^+}=0.99588\) in the effective model and \(F_{\Psi^+}=0.99518\) in
+the laboratory-frame calculation.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.7\textwidth]{Figure_Floquet_Effective_Validation.pdf}
+\caption{\textbf{Laboratory-frame validation of the effective Floquet model.}
+\textbf{a,} Concurrence generated during the Floquet passage, comparing the
+central-sideband effective model with the exact laboratory-frame finite-mode
+dynamics after removal of micromotion. \textbf{b,} Bell-state fidelity. The gray
+curve shows the raw laboratory-frame fidelity, while the dashed curve shows the
+same result in the slow frame. \textbf{c,} Atomic and photonic populations in
+both descriptions. \textbf{d,} Pointwise error between the effective and
+slow-frame laboratory dynamics. Parameters: \(N_c=2004\), \(g/\xi=0.1\),
+\(u_0=0.9\), \(\nu/\xi=8\), and \(\xi T=20\).}
+\label{fig:floquet_effective_validation}
+\end{figure*}
