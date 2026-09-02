@@ -7,6 +7,7 @@ outputs/
 
 # Manuscript drafts and submission material are kept local in this workspace.
 Manuscript/
+packages/
 
 # OS/editor metadata
 .DS_Store
