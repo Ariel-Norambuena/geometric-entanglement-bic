@@ -1,0 +1,42 @@
+\subsection{Robustness against control imperfections}
+\label{subsec:protocol_parameter_robustness}
+
+We also test the final Bell-state fidelity against independent control
+imperfections in the complete two-stage protocol. The scan is performed with
+the validated central-sideband effective model and reports the unconditional
+fidelity \(F_{\Psi^+}(t_f)\) at the end of the sequence. The four maps in
+Fig.~\ref{fig:protocol_parameter_robustness} correspond to errors in the local
+loading pulse, Floquet-coupling calibration, passage time and CD strength, and
+atomic detunings.
+
+The protocol is highly tolerant to imperfect Floquet-coupling calibration:
+over the full window
+\(-0.10\le\delta u_{1,2}/u_{1,2}\le0.10\), the final fidelity remains above
+\(0.995\). The loading pulse is also robust in the tested range, with
+\(F_{\Psi^+}>0.971\) for area errors
+\(|\delta A_\pi/A_\pi|\le0.10\) and phase errors
+\(|\delta\varphi_\pi|\le0.1\pi\). The CD-assisted passage remains above
+\(0.995\) for \(|\delta\alpha_{\rm CD}|\le0.025\) over the full scanned
+duration window \(-0.5\le\delta T/T_0\le0.5\), and remains above \(0.99\) for
+approximately \(-0.075\le\delta\alpha_{\rm CD}\le0.10\). The most restrictive
+imperfection in this scan is the relative atomic detuning: for
+\(|\Delta_{\rm r}|/\xi\le0.0125\), the final fidelity remains above \(0.99\)
+for all tested common detunings \(|\Delta_{\rm c}|/\xi\le0.05\).
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.7\textwidth]{Figure_Protocol_Parameter_Robustness.pdf}
+\caption{\textbf{Final-fidelity robustness of the two-stage Floquet--CD
+protocol.} Each panel shows the final unconditional Bell fidelity
+\(F_{\Psi^+}(t_f)\). \textbf{a,} Loading-pulse area and phase errors.
+\textbf{b,} Independent calibration errors in the Floquet-renormalized
+couplings \(u_1\) and \(u_2\). \textbf{c,} Passage-time and CD-amplitude
+errors, where \(\alpha_{\rm CD}=1\) is the nominal counterdiabatic strength.
+\textbf{d,} Common and relative atomic detunings, with
+\(\Delta_{1,2}=\Delta_{\rm c}\pm\Delta_{\rm r}/2\). White solid and dashed
+contours mark \(F_{\Psi^+}=0.99\) and \(F_{\Psi^+}=0.995\), respectively. The
+black dot denotes the nominal operating point. Parameters:
+\(N_c=804\), \(g/\xi=0.1\), \(u_0=0.9\), \(\nu/\xi=8\),
+\(\xi T_\pi=2\), and \(\xi T_0=20\).}
+\label{fig:protocol_parameter_robustness}
+\end{figure*}

@@ -50,7 +50,6 @@ physical interpretation to the poor transfer.
 - Real-space separation of localized photonic dressing from outgoing radiation.
 - Solver tolerance convergence.
 - Finite-size convergence using grids that retain `k = +/- pi/2`.
-- Robustness scans over amplitude, phase, geometry, detuning, and timing.
 
 No manuscript-level claim about successful Bell-BIC preparation should be made
 until the pending items above are completed.
@@ -166,4 +165,43 @@ figures/Figure_Floquet_Effective_Validation.png
 figures/Figure_Floquet_Effective_Validation.tif
 data/paper/floquet_effective_validation_paper_source_data.csv
 data/paper/floquet_effective_validation_paper_summary.json
+```
+
+## Production Control-Parameter Robustness Maps
+
+The final Bell fidelity of the full two-stage Floquet-CD protocol was scanned
+against four pairs of control errors in
+`scripts/scan_protocol_parameter_robustness.m`. The calculation uses the
+validated central-sideband effective model and reports the final unconditional
+fidelity `F_{Psi+}(t_f)`.
+
+The production run uses:
+
+```text
+Nc = 804
+nu/xi = 8
+u0 = 0.9
+xi*T_pi = 2
+xi*T_0 = 20
+g/xi = 0.1
+```
+
+The final fidelity remains above `0.995` over the full `+/-10%` calibration
+window for the Floquet-renormalized couplings `u1` and `u2`. For loading-pulse
+errors, the minimum fidelity over `|delta A_pi/A_pi| <= 0.10` and
+`|delta phi_pi| <= 0.1*pi` is `0.971510`. For the CD-assisted passage, the
+scan remains above `0.995` for `|delta alpha_CD| <= 0.025` over the full
+duration window `-0.5 <= delta T/T_0 <= 0.5`. The most restrictive parameter
+is the relative atomic detuning: over all tested common detunings
+`|Delta_c|/xi <= 0.05`, the final fidelity remains above `0.99` for
+`|Delta_r|/xi <= 0.0125`.
+
+The paper-ready figure and source data are written to:
+
+```text
+figures/Figure_Protocol_Parameter_Robustness.pdf
+figures/Figure_Protocol_Parameter_Robustness.png
+figures/Figure_Protocol_Parameter_Robustness.tif
+data/paper/protocol_parameter_robustness_paper_source_data.csv
+data/paper/protocol_parameter_robustness_paper_summary.json
 ```

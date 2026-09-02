@@ -92,6 +92,7 @@ run_counterdiabatic_passage
 run_two_stage_bell_bic_protocol
 scan_k_robustness_comparison
 validate_floquet_effective_model
+scan_protocol_parameter_robustness
 ```
 
 The reduced-grid development scan in `data/development/` is not a manuscript
@@ -139,6 +140,18 @@ validate_floquet_effective_model("paper")
 ```
 
 This exports `figures/Figure_Floquet_Effective_Validation.pdf` and matching
+source data under `data/paper/`.
+
+To generate final-fidelity robustness maps against loading-pulse errors,
+Floquet-coupling calibration errors, timing/CD errors, and atomic detunings,
+run:
+
+```matlab
+addpath('scripts')
+scan_protocol_parameter_robustness("paper")
+```
+
+This exports `figures/Figure_Protocol_Parameter_Robustness.pdf` and matching
 source data under `data/paper/`.
 
 ## Numerical method
