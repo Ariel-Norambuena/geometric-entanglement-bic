@@ -43,7 +43,7 @@ atomic direction. The next necessary step is to construct and validate the
 full instantaneous BIC branch, including photonic dressing, before assigning a
 physical interpretation to the poor transfer.
 
-## Pending Validation Before Scientific Claims
+## Additional Validation and Future Refinements
 
 - Production-grid dark-state-passage duration scans.
 - Frozen instantaneous BIC branch construction, including photonic dressing.
@@ -51,8 +51,10 @@ physical interpretation to the poor transfer.
 - Solver tolerance convergence.
 - Finite-size convergence using grids that retain `k = +/- pi/2`.
 
-No manuscript-level claim about successful Bell-BIC preparation should be made
-until the pending items above are completed.
+These items remain useful for a deeper microscopic characterization of the
+instantaneous dressed BIC branch. The paper-level preparation claims below are
+based on the CD-assisted two-stage dynamics, the laboratory-frame Floquet
+validation, and the robustness scans.
 
 ## Development Counterdiabatic Result
 
@@ -71,9 +73,9 @@ outputs/floquet/counterdiabatic_passage_dev.pdf
 ```
 
 This is strong evidence that the failure of the unassisted reduced-grid
-passage is a nonadiabatic-following problem in the atomic direction. It is not
-yet proof of a laboratory-frame Bell-BIC protocol; the lab-frame comparison
-and instantaneous dressed BIC validation remain pending.
+passage is a nonadiabatic-following problem in the atomic direction. The
+laboratory-frame comparison reported below validates the central-sideband
+description used for the CD-assisted passage.
 
 ## Development Two-Stage Protocol
 

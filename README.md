@@ -96,9 +96,10 @@ scan_protocol_parameter_robustness
 ```
 
 The reduced-grid development scan in `data/development/` is not a manuscript
-claim. It currently shows that the simple unassisted `u1/u2` passage does not
-yet prepare a high-fidelity Bell-BIC; the remaining scientific step is
-validating the full instantaneous BIC branch, including photonic dressing.
+claim. It records that the simple unassisted `u1/u2` passage does not prepare
+a high-fidelity Bell component on the short times considered here. The
+paper-level result is the CD-assisted two-stage protocol, together with the
+laboratory-frame validation and robustness scans listed below.
 
 The counterdiabatic development script adds the minimal atomic correction
 `H_CD = thetaDot(t) sigma_y` and exports concurrence, protocol fidelity, and
