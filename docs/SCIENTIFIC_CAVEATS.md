@@ -6,6 +6,10 @@ Floquet Bell-BIC manuscript is being developed.
 The September 2026 revision is documented in `PRR_REVISION_20260908.md`.
 It supersedes the initial reduced-grid interpretation with an analytic compact
 BIC, finite-grid checks, a CD-free hold, retrieval, and matched benchmarks.
+The geometric amplitude construction is additionally recovered and tested in
+`GEOMETRIC_DERIVATION_LIMITS.md`, with explicit attribution to A. R. Legon.
+Its conditional atomic identities are exact in the stated family; vacuum-field
+and frozen-memory approximations have separate, numerically quantified limits.
 
 ## Bell-BIC Language
 

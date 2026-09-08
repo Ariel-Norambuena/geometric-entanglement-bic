@@ -1,0 +1,11 @@
+{
+  "Nc": 2004,
+  "u0": 0.9,
+  "RelTol": 1E-10,
+  "AbsTol": 1E-12,
+  "MaxStep": 0.04,
+  "maximumEigenResidual": 1.0790761729309074E-16,
+  "maximumReconstructionError": 7.6706678979755069E-15,
+  "maximumConditionalConcurrenceError": 2.2204460492503131E-16,
+  "scope": "band-centre static states and vacuum-input CD passage in the effective model"
+}

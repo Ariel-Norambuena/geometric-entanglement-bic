@@ -26,7 +26,7 @@ plt.rcParams.update({
     "axes.linewidth": 0.65, "lines.linewidth": 1.65,
     "xtick.direction": "in", "ytick.direction": "in",
     "pdf.fonttype": 42, "ps.fonttype": 42, "savefig.dpi": 400,
-    "axes.spines.top": False, "axes.spines.right": False,
+    "axes.spines.top": True, "axes.spines.right": True,
 })
 BLUE, TEAL, RED, GREY, BLACK = "#0072B2", "#009E73", "#B24772", "#777777", "#222222"
 COLORS = {"atomic": BLUE, "dressed": BLACK, "fixed": RED, "attach": TEAL}
@@ -76,6 +76,8 @@ def save(fig, name):
     renderer=fig.canvas.get_renderer()
     frame=fig.bbox
     for ax in fig.axes:
+        if not hasattr(ax, "_colorbar"):
+            assert all(ax.spines[side].get_visible() for side in ["left", "right", "top", "bottom"])
         bounds=[ax.get_tightbbox(renderer)]
         if ax.get_legend() is not None:
             bounds.append(ax.get_legend().get_window_extent(renderer))
@@ -263,5 +265,39 @@ def beta_maps():
     save(fig,"Figure_Floquet_Depth_Robustness")
 
 
+def geometric_appendix():
+    folder=DATA / "geometric_appendix"
+    r=read_csv(folder / "radiation_zero.csv")
+    a=read_csv(folder / "amplitude_rule.csv")
+    d=read_csv(folder / "dressing_error.csv")
+    m=read_csv(folder / "frozen_memory.csv")
+    fig,ax=canvas(height=5.8)
+    ax[0].loglog(r["delta_k"],r["selected_plus_root"],color=BLUE,label="Selected channel")
+    ax[0].loglog(r["delta_k"],r["other_plus_root"],"--",color=RED,label="Opposite channel")
+    format_ax(ax[0],"a","Radiation near the resonant root",xlabel=r"$|k-K_0|$",ylabel=r"$N_c|\mathcal{M}(k)|^2/(g u_0)^2$")
+    legend(ax[0],1)
+    ax[0].text(0.53,0.27,r"$\propto\delta k^4$",color=BLUE,transform=ax[0].transAxes)
+    ax[0].text(0.18,0.76,r"$\propto\delta k^2$",color=RED,transform=ax[0].transAxes)
+    aa=a[a["n2"]==10];lam=aa["lambda"]
+    ax[1].plot(lam,2*lam/(1+lam**2),color=BLACK,label="Atomic rule")
+    ax[1].plot(lam[::3],aa["C_conditional"][::3],"o",color=BLUE,ms=3.8,mfc="white",label="Conditional")
+    ax[1].plot(lam,aa["C_unconditional"],"--",color=TEAL,label="Unconditional")
+    format_ax(ax[1],"b","Geometric amplitude selection",xlabel=r"$\lambda_F=n_1u_1/(n_2u_2)$",ylabel="Concurrence")
+    ax[1].set_ylim(-0.025,1.03)
+    legend(ax[1],1)
+    for n2,col,ls in [(6,BLUE,"-"),(10,TEAL,"--")]:
+        dd=d[d["n2"]==n2]
+        ax[2].loglog(dd["g_over_xi"],dd["vacuum_state_infidelity"],ls,color=col,label=rf"$(n_1,n_2)=(6,{n2})$")
+    format_ax(ax[2],"c","Accuracy of the vacuum-field state",xlabel=r"$g/\xi$",ylabel=r"$1-|\langle a,0|B\rangle|^2=1-Z$")
+    legend(ax[2],1)
+    for T,col,ls,marker in [(20,BLUE,"-","o"),(80,TEAL,"--","s"),(160,RED,":","^")]:
+        mm=m[m["T"]==T]
+        ax[3].loglog(mm["g_over_xi"],mm["max_atomic_error"],ls,color=col,marker=marker,ms=4,mfc="white",label=rf"$\xi T={T}$")
+    format_ax(ax[3],"d","Frozen-memory approximation",xlabel=r"$g/\xi$",ylabel=r"$\max_t\|c_{\rm fr}-c_{\rm ex}\|_2$")
+    legend(ax[3],3)
+    save(fig,"Figure_Geometric_BIC_Approximation")
+
+
 if __name__=="__main__":
     two_stage();validation();dressed_hold();matched();effective_maps();beta_maps()
+    geometric_appendix()

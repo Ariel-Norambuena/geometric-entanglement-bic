@@ -4,6 +4,10 @@ This analysis uses connections (0,6),(2,8), g/xi=0.1, u0=0.9, and
 the full Brillouin-zone convention implemented in `giant_atom_static_model`.
 The original static-BIC scripts and archived figures are preserved.
 
+The boxed-figure update additionally recovers A. R. Legon's geometric
+amplitude construction and tests its exact and approximate limits. See
+`GEOMETRIC_DERIVATION_LIMITS.md` and `data/prr_revision/geometric_appendix/`.
+
 ## New checks
 
 - `compact_bic_branch.m` gives the normalized compact eigenstate, its

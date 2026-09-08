@@ -12,6 +12,48 @@ def csv(name):
     return np.genfromtxt(DATA/name,delimiter=",",names=True,dtype=None,encoding="utf8")
 
 
+def verify_geometric_appendix():
+    prefix="geometric_appendix/"
+    a=csv(prefix+"amplitude_rule.csv")
+    lam=a["lambda"]
+    assert a["eigen_residual"].max()<1e-12
+    assert a["reconstruction_error"].max()<1e-12
+    assert np.max(abs(a["C_conditional"]-2*lam/(1+lam**2)))<1e-12
+    assert np.max(abs(a["C_unconditional"]-a["Z"]*a["C_conditional"]))<1e-12
+    r=csv(prefix+"radiation_zero.csv")
+    selected=r["delta_k"]<=1e-3
+    slopes={}
+    for root in ["plus","minus"]:
+        for channel,power in [("selected",4),("other",2)]:
+            field=f"{channel}_{root}_root"
+            slope=float(np.polyfit(np.log(r["delta_k"][selected]),np.log(r[field][selected]),1)[0])
+            assert abs(slope-power)<0.01
+            slopes[field]=slope
+    d=csv(prefix+"dressing_error.csv")
+    for n2,coefficient in [(6,0.5),(10,15/17)]:
+        row=d[d["n2"]==n2]
+        chi=coefficient*(0.9*row["g_over_xi"])**2
+        assert np.max(abs(row["Z"]-1/(1+chi)))<1e-12
+        assert np.max(abs(row["vacuum_state_infidelity"]-chi/(1+chi)))<1e-12
+    m=csv(prefix+"frozen_memory.csv")
+    assert m["exact_norm_error"].max()<1e-9
+    for T in [20,80,160]:
+        row=m[m["T"]==T]
+        low=row[np.isclose(row["g_over_xi"],0.01)]["max_atomic_error"][0]
+        high=row[np.isclose(row["g_over_xi"],0.02)]["max_atomic_error"][0]
+        assert abs(high/low-4)<0.02
+    c=csv(prefix+"convergence.csv")
+    largest=0
+    for T in [20,160]:
+        for g in [0.1,0.4]:
+            row=c[(c["T"]==T)&np.isclose(c["g_over_xi"],g)]
+            assert len(row)==4
+            largest=max(largest,float(np.ptp(row["max_atomic_error"])))
+    assert largest<1e-9
+    return {"geometric_eigen_residual":float(a["eigen_residual"].max()),
+            "radiation_zero_powers":slopes,"frozen_memory_convergence_difference":largest}
+
+
 def main():
     report=json.loads((DATA/"revision_summary.json").read_text())
     grid=csv("grid_convergence.csv")
@@ -75,6 +117,7 @@ def main():
             "loading_phase_invariance_error":symmetry_error,
             "loading_area_scaling_error":float(area_error),
             "dressed_tracking_error":float(np.max(abs(n["dressed"]["FB"]-1)))}
+    result.update(verify_geometric_appendix())
     (DATA/"artifact_checks.json").write_text(json.dumps(result,indent=2)+"\n")
     print(json.dumps(result,indent=2))
 

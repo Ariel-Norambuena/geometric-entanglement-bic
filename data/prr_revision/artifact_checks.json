@@ -4,5 +4,13 @@
   "maximum_beta_grid_difference": 8.84503581488616e-12,
   "loading_phase_invariance_error": 4.68141081455542e-11,
   "loading_area_scaling_error": 7.223262876721037e-09,
-  "dressed_tracking_error": 6.128431095930864e-14
+  "dressed_tracking_error": 6.128431095930864e-14,
+  "geometric_eigen_residual": 1.07907617293091e-16,
+  "radiation_zero_powers": {
+    "selected_plus_root": 3.999999609502646,
+    "other_plus_root": 1.9999995314005992,
+    "selected_minus_root": 3.999999609494456,
+    "other_minus_root": 1.9999995313965053
+  },
+  "frozen_memory_convergence_difference": 2.7410018699214334e-13
 }

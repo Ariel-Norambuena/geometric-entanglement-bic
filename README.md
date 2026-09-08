@@ -13,6 +13,8 @@ not evidence of superior retention under matched conditions.
 addpath('scripts')
 run_prr_revision_validation('paper')
 scan_prr_beta_errors('paper')
+validate_geometric_bic_approximation('paper')
+check_geometric_appendix_convergence()
 ```
 
 ```text
@@ -29,6 +31,10 @@ The manuscript source and local submission packages are not published
 by this repository.
 The optional MATLAB `'dev'` mode writes to `data/development/prr_revision/`,
 never over the paper data; reduced-grid results are not publication evidence.
+All current result panels use closed four-sided axes. The additional geometric
+appendix recovers A. R. Legon's analytical amplitude construction and tests
+photonic dressing and envelope freezing separately; see
+[`docs/GEOMETRIC_DERIVATION_LIMITS.md`](docs/GEOMETRIC_DERIVATION_LIMITS.md).
 
 ## Original static-BIC study
 
