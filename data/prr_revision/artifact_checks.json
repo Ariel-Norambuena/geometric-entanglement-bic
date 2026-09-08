@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "nominal_grid_tolerance": 1e-10,
+  "maximum_beta_grid_difference": 8.84503581488616e-12,
+  "loading_phase_invariance_error": 4.68141081455542e-11,
+  "loading_area_scaling_error": 7.223262876721037e-09,
+  "dressed_tracking_error": 6.128431095930864e-14
+}

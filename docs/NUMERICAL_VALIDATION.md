@@ -1,5 +1,15 @@
 # Numerical Validation Plan
 
+## September 2026 Status
+
+The dated development record below is retained for provenance. Its prospective
+items are superseded, where completed, by `PRR_REVISION_20260908.md` and the
+checked outputs in `data/prr_revision/`. The current revision includes an exact
+compact BIC, dressed-control identities, production duration and carrier scans,
+finite-grid convergence, hold/retrieval, matched K comparisons, and beta errors.
+`scripts/verify_prr_revision_artifacts.py` checks the archived numerical results.
+Losses and all-stage laboratory-frame validation remain outside this evidence.
+
 ## Completed Baseline Checks
 
 - The previous-paper Fig. 3 left-panel dynamics were restored to the paper

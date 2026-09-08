@@ -1,5 +1,37 @@
 # Geometric control of maximal entanglement via BICs
 
+## Current PRR revision (September 2026)
+
+The updated Floquet study and its reproducible results are documented in
+[`docs/PRR_REVISION_20260908.md`](docs/PRR_REVISION_20260908.md).
+It distinguishes atomic Bell preparation, dressed-BIC loading, a CD-free
+hold, and retrieval. The revised comparison uses matched geometry and
+exchange pulses; the older PRA-style comparison below is archival and is
+not evidence of superior retention under matched conditions.
+
+```matlab
+addpath('scripts')
+run_prr_revision_validation('paper')
+scan_prr_beta_errors('paper')
+```
+
+```text
+python -m pip install -r requirements-prr-figures.txt
+python scripts/make_prr_revision_figures.py
+python scripts/verify_prr_revision_artifacts.py
+```
+
+The revised data are in `data/prr_revision/`; the current PDF/PNG figures
+are in `figures/prr_revision/`. Plotting uses NumPy, SciPy, and Matplotlib.
+Full nominal wavefunctions are split by protocol in separate MAT files;
+CSV files and compact observable archives are sufficient to replot.
+The manuscript source and local submission packages are not published
+by this repository.
+The optional MATLAB `'dev'` mode writes to `data/development/prr_revision/`,
+never over the paper data; reduced-grid results are not publication evidence.
+
+## Original static-BIC study
+
 MATLAB scripts used to reproduce the numerical and analytical results shown
 in Figs. 2 and 3 of the manuscript:
 
@@ -22,7 +54,7 @@ and dynamical robustness of bound states in the continuum (BICs).
 - `docs/` records the numerical conventions, validation status, and scientific
   caveats for the Floquet extension.
 
-All generated figures are written to `outputs/`.
+The original static-study figures are written to `outputs/`.
 
 ## Requirements
 

@@ -1,0 +1,13 @@
+{
+  "Nc": 804,
+  "gridSize": 21,
+  "T": 20,
+  "holdTime": 100,
+  "u0": 0.9,
+  "errorOnset": "after ideal local loading",
+  "RelTol": 1E-9,
+  "AbsTol": 1E-11,
+  "minimumPreparationFidelity": 0.99439474186882371,
+  "minimumHoldFidelity": 0.99458033554385172,
+  "maximumNormError": 5.9696692034094667E-13
+}
